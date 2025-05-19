@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import addChatHistory from "../../db/functions/addChatHistory";
 dotenv.config();
 import { IChatHistory } from "../../db/models/user.model";
+import bot from "../../bot";
 
 export default async function talkToAI(
   chatID: number,
@@ -32,7 +33,7 @@ export default async function talkToAI(
         {
           role: "system",
           content: `
-              Sen SA Construction group inc firmasida ishlaydigan customer support specialist.
+              Sen Shtukaturka.uz firmasida ishlaydigan customer support specialist.
               Haqiqiy odam ka'bi javob yoz, qisqa va lo'nda.
               Mijozlar bilan hush muomala muloqotda bo'l.
               Kompaniya qurilish xizmatlarini taklif qiladi: uy-joy ta'miri, dizayn, santexnika, elektr ishlari va boshqalar.
@@ -72,6 +73,7 @@ export default async function talkToAI(
     callback(null, response.choices[0].message.content);
   } catch (error) {
     console.error("Error in talkToAI:", error);
+    bot.sendMessage(process.env.ADMIN_TELEGRAM_CHAT_ID as string, `Error in talkToAI: ${error}`);
     callback(error, null);
   }
 }

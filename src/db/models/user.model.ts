@@ -25,7 +25,7 @@ const UserSchema = new Schema<IUser>({
     type: [
       {
         role: { type: String, enum: ["user", "assistant"] },
-        content: String,
+        content: { type: String, required: true },
         timeStamp: { type: Date, default: Date.now },
       },
     ],

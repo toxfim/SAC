@@ -11,3 +11,4 @@ export default bot;
 
 import "./start";
 import "./handlers/business_message";
+import "./handlers/group_msg";
