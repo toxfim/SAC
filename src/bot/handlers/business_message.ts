@@ -33,7 +33,7 @@ bot.on("business_message", async (msg) => {
       role: "assistant",
       content: response as string,
     };
-    // await sendToGroup(response as string)
+    //   sendToGroup(response as string)
     await addChatHistory(chatID, newChatHistory);
     bot.sendChatAction(chatID, "typing", {
       // @ts-ignore
@@ -47,3 +47,4 @@ bot.on("business_message", async (msg) => {
     });
   });
 });
+ 
